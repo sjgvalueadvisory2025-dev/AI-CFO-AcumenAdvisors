@@ -4,6 +4,25 @@
    - Real submission via /api/submit (Resend with attachments)
    ============================================================ */
 
+// ───── MOBILE NAV TOGGLE (runs on every page that includes forms.js) ─────
+(function () {
+  const btn   = document.querySelector('.nav-toggle');
+  const links = document.getElementById('primary-nav');
+  if (!btn || !links) return;
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('is-open');
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('is-open');
+      btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
 (function () {
   // ───── Elements ─────
   const form        = document.getElementById('cfo-form');
