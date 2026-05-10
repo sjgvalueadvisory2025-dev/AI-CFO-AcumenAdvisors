@@ -75,8 +75,8 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
-  const { RESEND_API_KEY, FROM_EMAIL, TO_EMAIL, OTP_SECRET } = process.env;
-  if (!RESEND_API_KEY || !FROM_EMAIL || !TO_EMAIL || !OTP_SECRET) {
+  const { GMAIL_USER, GMAIL_PASS, TO_EMAIL, OTP_SECRET } = process.env;
+if (!GMAIL_USER || !GMAIL_PASS || !TO_EMAIL || !OTP_SECRET) {
     return res.status(500).json({
       ok: false,
       error: 'Server misconfigured. Missing RESEND_API_KEY, FROM_EMAIL, TO_EMAIL, or OTP_SECRET.',
