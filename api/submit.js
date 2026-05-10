@@ -11,10 +11,6 @@ const fs = require('fs');
 const formidable = require('formidable');
 const nodemailer = require('nodemailer');
 
-// Disable Vercel/Next default body parsing so formidable can read the raw stream.
-module.exports.config = {
-  api: { bodyParser: false },
-};
 
 // Hard caps on the upload to stay within Vercel & Resend limits.
 const MAX_FILES = 10;
@@ -69,7 +65,7 @@ function parseForm(req) {
   });
 }
 
-module.exports = async function handler(req, res) {
+const handler = async function(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
@@ -252,3 +248,5 @@ try {
     fileCount: attachments.length,
   });
 };
+handler.config = { api: { bodyParser: false } };
+module.exports = handler;
