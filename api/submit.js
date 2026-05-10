@@ -9,7 +9,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const formidable = require('formidable');
-const { Resend } = require('resend');
+const nodemailer = require('nodemailer');
 
 // Disable Vercel/Next default body parsing so formidable can read the raw stream.
 module.exports.config = {
@@ -215,33 +215,33 @@ module.exports = async function handler(req, res) {
     </div>
   `;
 
-  // ───── 6. Send via Resend ─────
-  const resend = new Resend(RESEND_API_KEY);
-  try {
-    const { error } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: TO_EMAIL,
-      reply_to: email,
-      subject,
-      text,
-      html,
-      attachments: attachments.map((a) => ({
-        filename: a.filename,
-        content: a.content,
-      })),
-      headers: {
-        'X-AI-CFO-Service': service,
-        'X-AI-CFO-Company': company,
-      },
-    });
-    if (error) {
-      console.error('Resend submit error:', error);
-      return res.status(502).json({ ok: false, error: 'Failed to deliver your submission. Please try again.' });
-    }
-  } catch (err) {
-    console.error('submit exception:', err);
-    return res.status(502).json({ ok: false, error: 'Failed to deliver your submission. Please try again.' });
-  }
+  // ───── 6. Send via Nodemailer ─────
+  const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_PASS },
+});
+
+try {
+  await transporter.sendMail({
+    from: `Acumen Advisors <${process.env.GMAIL_USER}>`,
+    to: process.env.TO_EMAIL,
+    replyTo: email,
+    subject,
+    text,
+    html,
+    attachments: attachments.map((a) => ({
+      filename: a.filename,
+      content: a.content,
+    })),
+    headers: {
+      'X-AI-CFO-Service': service,
+      'X-AI-CFO-Company': company,
+    },
+  });
+} catch (err) {
+  console.error('submit error:', err);
+  return res.status(502).json({ ok: false, error: 'Failed to deliver your submission. Please try again.' });
+}
 
   return res.status(200).json({
     ok: true,
