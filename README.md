@@ -3,17 +3,18 @@
 Static landing site (`index.html` + 3 form pages) plus two Vercel serverless
 endpoints that:
 
-1. Email a 6-digit verification code to the founder via **Resend** (`/api/send-otp`).
+1. Email a 6-digit verification code to the founder via **Gmail SMTP**
+   (`/api/send-otp`), using Nodemailer.
 2. Email the full submission **with all uploaded files attached** to your
-   inbox via Resend (`/api/submit`). The service tier is included in both
+   inbox via Gmail SMTP (`/api/submit`). The service tier is included in
    the email subject (`[AI-CFO Snapshot]`, `[AI-CFO Deep Dive]`, or
-   `[AI-CFO Founder Call]`) and a custom `X-AI-CFO-Service` header so you
-   always know which of the three the founder selected.
+   `[AI-CFO Founder Call]`) so you always know which of the three the
+   founder selected. The founder's verified email is set as `reply-to`,
+   so hitting "Reply" goes straight to them.
 
 ---
 
 ## Folder structure
-
 ```
 .
 ├── index.html              # landing page (links to the 3 form pages)
@@ -43,37 +44,52 @@ server re-derives the HMAC to verify. Codes expire in 10 minutes.
 Set these in **Vercel → Project → Settings → Environment Variables** (and in
 a local `.env.local` if you want to run `vercel dev`).
 
-| Name             | Required | Example                                            |
-|------------------|----------|----------------------------------------------------|
-| `RESEND_API_KEY` | yes      | `re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`              |
-| `TO_EMAIL`       | yes      | `global.acumenadvisors@gmail.com`                  |
-| `FROM_EMAIL`     | yes      | `Acumen Advisors <onboarding@resend.dev>`          |
-| `OTP_SECRET`     | yes      | a random 64-char hex string (see below)            |
+| Name          | Required | Example                                  |
+|---------------|----------|------------------------------------------|
+| `GMAIL_USER`  | yes      | `global.acumenadvisors@gmail.com`        |
+| `GMAIL_PASS`  | yes      | `xxxx xxxx xxxx xxxx` (Gmail **App Password**, not your real password) |
+| `TO_EMAIL`    | yes      | `global.acumenadvisors@gmail.com`        |
+| `OTP_SECRET`  | yes      | a random 64-char hex string (see below)  |
 
 Generate a strong `OTP_SECRET`:
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-> `onboarding@resend.dev` works immediately with any Resend API key.
-> Once you verify a domain in Resend (recommended for production deliverability),
-> change `FROM_EMAIL` to e.g. `Acumen Advisors <ai-cfo@yourdomain.com>`.
+### Getting a Gmail App Password
+
+Gmail no longer allows logging in with your real password from third-party
+apps. You need to generate an **App Password**:
+
+1. Make sure **2-Step Verification** is enabled on the Google account:
+   <https://myaccount.google.com/security>
+2. Visit <https://myaccount.google.com/apppasswords>.
+3. Create an App Password (any name, e.g. "Acumen AI-CFO Vercel").
+4. Google will show you a 16-character password like `abcd efgh ijkl mnop`.
+   Copy it (spaces are fine — you can keep or remove them).
+5. Paste that as `GMAIL_PASS` in Vercel.
+
+> The `from` address on outgoing email is set to `Acumen Advisors <GMAIL_USER>`.
+> So `GMAIL_USER` is both the SMTP login **and** the visible sender address.
+> If you want to send from a custom domain, set up that domain in Gmail first
+> (Gmail → Settings → Accounts → "Send mail as") and use the Gmail account
+> that owns the alias.
 
 ---
 
 ## Deployment to Vercel via GitHub
 
 1. **Push to GitHub.**
-   ```bash
+```bash
    git init
    git add .
-   git commit -m "Initial AI-CFO site + Resend API"
+   git commit -m "Initial AI-CFO site + Gmail API"
    git branch -M main
    git remote add origin git@github.com:<you>/<repo>.git
    git push -u origin main
-   ```
+```
 
-2. **Create the Resend API key** at <https://resend.com/api-keys>. Copy it.
+2. **Generate a Gmail App Password** (see section above) and copy it.
 
 3. **Import the repo on Vercel**: <https://vercel.com/new>
    - Framework preset: **Other** (Vercel will auto-detect static + `/api`).
@@ -82,12 +98,12 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
    - Output directory: leave empty.
 
 4. **Add the environment variables** under
-   *Settings → Environment Variables* (mark them for Production, Preview, and
-   Development if you'll use `vercel dev`):
-   - `RESEND_API_KEY`
-   - `TO_EMAIL=global.acumenadvisors@gmail.com`
-   - `FROM_EMAIL=Acumen Advisors <onboarding@resend.dev>`
-   - `OTP_SECRET=<the random hex you generated>`
+   *Settings → Environment Variables* (mark them for Production, Preview,
+   and Development if you'll use `vercel dev`):
+   - `GMAIL_USER`
+   - `GMAIL_PASS`
+   - `TO_EMAIL`
+   - `OTP_SECRET`
 
 5. **Deploy.** First push creates the first Production deployment;
    every subsequent `git push` to `main` redeploys automatically.
@@ -112,12 +128,9 @@ Copy `.env.example` to `.env.local` and fill in real values. Then visit
 (prefix is one of `[AI-CFO Snapshot]`, `[AI-CFO Deep Dive]`, `[AI-CFO Founder Call]`)
 
 **Body** includes the founder, company, website, verified email, business
-description, a list of attached files with sizes, and the timestamp.
-Replying to the email replies to the **founder's verified email address**
-(set via `reply_to`).
-
-**Headers** include `X-AI-CFO-Service: snapshot|deep-dive|founder-call` so you
-can build a Gmail filter per tier if you want.
+description, a list of attached files with sizes, and the submission timestamp.
+Hitting "Reply" replies to the **founder's verified email address** (set via
+`replyTo`), so you don't accidentally reply to yourself.
 
 **Attachments:** every file the founder uploaded is attached to the email.
 
@@ -132,18 +145,50 @@ can build a Gmail filter per tier if you want.
   If you expect bigger uploads, upgrade to Vercel Pro (the function code already
   handles up to 25 MB) or switch to a direct-to-storage upload pattern
   (Vercel Blob / S3 presigned URL).
+- Gmail SMTP has a **daily sending limit of ~500 emails/day** for free
+  accounts and **~2,000/day** for Google Workspace accounts. If you outgrow
+  this, switch the transport in `api/send-otp.js` and `api/submit.js` to a
+  dedicated email provider (Resend, Postmark, SendGrid).
 
 ---
 
 ## Where the three services link from the landing page
 
-`index.html` already links each service card to the matching form page:
+`index.html` is a single-page experience with a 3-tab interactive section
+(**Understand Your Finances**, **What We Do**, **Why You Can Trust This**)
+and CTAs that link out to the three service intake forms:
 
-| Card                  | href                |
-|-----------------------|---------------------|
-| AI-CFO Snapshot       | `snapshot.html`     |
-| AI-CFO Deep Dive      | `deep-dive.html`    |
-| AI-CFO Founder Call   | `founder-call.html` |
+| CTA / Card             | href                |
+|------------------------|---------------------|
+| AI-CFO Snapshot        | `snapshot.html`     |
+| AI-CFO Deep Dive       | `deep-dive.html`    |
+| AI-CFO Founder Call    | `founder-call.html` |
 
 Each form page declares `data-service="..."` on its `<form>`, so `forms.js`
 sends the right tier to the API automatically.
+
+---
+
+## Troubleshooting
+
+**Email never arrives / server returns "Server misconfigured".**
+Check that all four env vars (`GMAIL_USER`, `GMAIL_PASS`, `TO_EMAIL`,
+`OTP_SECRET`) are set in Vercel for the **Production** environment, then
+redeploy. Vercel does not pick up new env vars on existing deployments —
+you must trigger a new build.
+
+**"Invalid login: 535-5.7.8 Username and Password not accepted".**
+You're using your real Gmail password. You need an **App Password** (see
+the Gmail App Password section above). 2-Step Verification must be enabled
+on the Google account first.
+
+**OTP says "incorrect" even when you typed the right code.**
+The HMAC depends on `OTP_SECRET`. If you rotate `OTP_SECRET` between the
+"send code" and "submit" steps, verification will fail. Make sure
+`OTP_SECRET` is identical across Production, Preview, and Development.
+
+**Founders aren't receiving the OTP email.**
+The "from" address is `GMAIL_USER`. Personal Gmail addresses sometimes land
+in Promotions or Spam. For better deliverability, use a Google Workspace
+account with a custom domain (e.g. `noreply@acumenadvisors.com`) and set up
+SPF + DKIM in Google Admin.lly.
