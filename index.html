@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI-CFO — The finance brain your startup needs, without hiring a CFO</title>
+  <title>AI-CFO — Finance, finally clear. For first-time founders.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,298 +14,269 @@
 <!-- ─────────── NAV ─────────── -->
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="https://acumenadvisors.vercel.app/" class="brand" aria-label="Acumen Advisors — home">
+    <a href="/" class="brand" aria-label="Acumen Advisors — home">
       <img class="brand-logo" src="assets/acumen-logo.png" alt="Acumen Advisors">
     </a>
     <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
     <div id="primary-nav" class="nav-links">
-      <a href="#services">AI-CFO Suite</a>
-      <a href="#why">Why CFO-Led</a>
-      <a href="#cost">The Cost of Waiting</a>
-      <a href="#contact" class="nav-cta">Get in Touch</a>
+      <a href="#tab-01" data-tab-link="01">Understand</a>
+      <a href="#tab-02" data-tab-link="02">What We Do</a>
+      <a href="#tab-03" data-tab-link="03">Why Trust This</a>
+      <a href="snapshot.html" class="nav-cta">Free Snapshot</a>
     </div>
   </div>
 </nav>
 
 <!-- ─────────── HERO ─────────── -->
-<header class="hero">
+<header class="hero hero-tight">
   <div class="container">
-    <div class="hero-eyebrow-row">
-      <span class="eyebrow"><span class="dot"></span>AI-CFO &nbsp;·&nbsp; For Founders &amp; CEOs</span>
-      <span class="hero-rule"></span>
-      <span class="eyebrow" style="color: var(--mute);">A new offering from Acumen Advisors</span>
-    </div>
-
-    <h1>5 questions. 5 minutes.<br>5 years of financial<br>clarity <em>for your company.</em></h1>
-
-    <p class="hero-lede">
-      Answer a few simple questions, share your numbers, and get a clear read on where your money is going, how long it lasts, and the three decisions that matter most right now. Built by Senior CFOs. Delivered to your inbox in 24 hours.
+    <span class="eyebrow"><span class="dot"></span>AI-CFO · For first-time founders</span>
+    <h1 class="hero-h1-tight">Finance,<br><em>finally clear.</em></h1>
+    <p class="hero-lede hero-lede-tight">
+      Three minutes to pick where you start. Twenty-four hours to get answers a CFO would give you.
     </p>
-
-    <div style="margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap;">
-      <a href="snapshot.html" class="btn btn-primary"><span>Start my free Snapshot</span><span class="btn-arrow-icon">→</span></a>
-      <a href="#why" class="btn btn-ghost">See how it works</a>
-    </div>
-
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="k">How long it takes you</div>
-        <div class="v">About 5 minutes</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="k">When you get your report</div>
-        <div class="v">Within 24 hours</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="k">What it costs to try</div>
-        <div class="v">Free</div>
-      </div>
+    <div class="hero-cta-row">
+      <a href="snapshot.html" class="btn btn-primary">
+        <span>See your financial blind spots</span>
+        <span class="btn-arrow-icon">→</span>
+      </a>
     </div>
   </div>
 </header>
 
-<!-- ─────────── 3 SERVICES ─────────── -->
-<section class="services" id="services">
+<!-- ─────────── 3-TAB INTERACTIVE SECTION ─────────── -->
+<section class="tabs-section">
   <div class="container">
-    <div class="section-head">
-      <div class="label">
-        <span class="eyebrow"><span class="dot"></span>01 — Pick Your Starting Point</span>
-        <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--mute);">START FREE · GO DEEPER WHEN READY</span>
+
+    <!-- Tab buttons -->
+    <div class="tab-bar" role="tablist" aria-label="Explore Acumen AI-CFO">
+      <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="tab-01" id="tab-btn-01" data-tab="01">
+        <span class="tab-num">01</span>
+        <span class="tab-label">Understand Your Finances</span>
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-02" id="tab-btn-02" data-tab="02">
+        <span class="tab-num">02</span>
+        <span class="tab-label">What We Do</span>
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-03" id="tab-btn-03" data-tab="03">
+        <span class="tab-num">03</span>
+        <span class="tab-label">Why You Can Trust This</span>
+      </button>
+    </div>
+
+    <!-- ────── TAB 01 ────── -->
+    <div class="tab-panel is-active" id="tab-01" role="tabpanel" aria-labelledby="tab-btn-01">
+
+      <div class="mini-hero">
+        <span class="eyebrow"><span class="dot"></span>01 — Understand Your Finances</span>
+        <h2>You shouldn't have to guess<br>how long your money lasts.</h2>
+        <p class="lede">A clear read on your runway, your spending, and your next three decisions — built for founders running their first company.</p>
+        <div class="mini-cta-row">
+          <a href="snapshot.html" class="btn btn-primary"><span>Get a free finance audit</span><span class="btn-arrow-icon">→</span></a>
+          <a href="snapshot.html" class="btn btn-ghost">Understand your runway</a>
+        </div>
       </div>
-      <div>
-        <h2>Three ways to get a CFO's<br>view of your business.</h2>
-        <p class="lede" style="margin-top: 24px;">Start free. Go deeper when you're ready. No long contracts, no jargon, no surprises.</p>
+
+      <div class="problem-grid">
+        <div class="problem-cell">
+          <div class="problem-num">/ 01</div>
+          <h3>You don't actually know how many months of cash you have left.</h3>
+          <p>Most founders are off by 2–4 months. That gap is where companies die.</p>
+        </div>
+        <div class="problem-cell">
+          <div class="problem-num">/ 02</div>
+          <h3>You're hiring based on revenue coming in — not what's left after costs.</h3>
+          <p>Six months later, it turns into layoffs.</p>
+        </div>
+        <div class="problem-cell">
+          <div class="problem-num">/ 03</div>
+          <h3>An investor asks for your numbers and you lose a week scrambling.</h3>
+          <p>By the time you reply, the conversation has cooled.</p>
+        </div>
+        <div class="problem-cell">
+          <div class="problem-num">/ 04</div>
+          <h3>You're growing — but you're not sure you're actually making money.</h3>
+          <p>Some of your biggest customers may be costing you more than they pay.</p>
+        </div>
+      </div>
+
+      <div class="how-block">
+        <h3>How we help</h3>
+        <div class="how-row">
+          <div class="how-step">
+            <div class="how-step-num">A</div>
+            <h4>Share your numbers. Get a real answer in 24 hours.</h4>
+            <p>Upload your P&amp;L, bank statements, or whatever you have. We do the rest.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">B</div>
+            <h4>You see what a CFO would see — without hiring one.</h4>
+            <p>Runway, leaks, pricing gaps, and the three things to fix first. In plain English.</p>
+          </div>
+        </div>
+        <a href="snapshot.html" class="btn btn-primary"><span>Start with a free Snapshot</span><span class="btn-arrow-icon">→</span></a>
       </div>
     </div>
 
-    <div class="service-grid">
+    <!-- ────── TAB 02 ────── -->
+    <div class="tab-panel" id="tab-02" role="tabpanel" aria-labelledby="tab-btn-02" hidden>
 
-      <a class="service-card" href="snapshot.html">
-        <div class="service-eyebrow">
-          <span>AI-CFO · Tier I</span>
-          <span class="service-num">01 / 03</span>
-        </div>
-        <h3>AI-CFO<br>Snapshot</h3>
-        <div class="svc-price">
-          <span class="svc-price-now">Free</span>
-          <span class="svc-price-tag">No credit card required</span>
-        </div>
-        <p class="svc-desc">A free, fast read on your money. Find your biggest financial blind spots in 24 hours.</p>
-        <ul class="service-list">
-          <li>See how many months of cash you have left</li>
-          <li>Spot where your money is quietly leaking</li>
-          <li>Get the three things to fix first</li>
-          <li>Receive a clean, one-page summary</li>
-        </ul>
-        <div class="service-meta">
-          <div>
-            <div class="service-meta-k">Turnaround</div>
-            <div class="service-meta-v">24 hours</div>
-          </div>
-          <div>
-            <div class="service-meta-k">Format</div>
-            <div class="service-meta-v">Written report</div>
-          </div>
-        </div>
-        <div class="service-cta">
-          <span class="service-cta-text">Get my free Snapshot</span>
-          <span class="service-cta-arrow">→</span>
-        </div>
-      </a>
+      <div class="mini-hero">
+        <span class="eyebrow"><span class="dot"></span>02 — What We Do</span>
+        <h2>Five outcomes.<br><em>Not features.</em></h2>
+        <p class="lede">No tools. No dashboards to learn. Just answers to the questions keeping you up at night.</p>
+      </div>
 
-      <a class="service-card" href="deep-dive.html">
-        <div class="service-eyebrow">
-          <span>AI-CFO · Tier II</span>
-          <span class="service-num">02 / 03</span>
+      <div class="outcome-grid">
+        <div class="outcome-cell">
+          <div class="outcome-num">01</div>
+          <h3>Runway clarity</h3>
+          <p>Know exactly how many months you have left. We turn messy financials into a real cash runway number — not a hopeful one.</p>
         </div>
-        <h3>AI-CFO<br>Deep Dive</h3>
-        <div class="svc-price">
-          <span class="svc-price-old">$125</span>
-          <span class="svc-price-now">$99</span>
-          <span class="svc-price-tag">Introductory pricing</span>
+        <div class="outcome-cell">
+          <div class="outcome-num">02</div>
+          <h3>Cash flow tracking</h3>
+          <p>See where your money is actually going. Every dollar mapped to what it's buying you. So you can cut what isn't working.</p>
         </div>
-        <p class="svc-desc">A full financial picture of your business, ready to share with investors or your team.</p>
-        <ul class="service-list">
-          <li>A simple model showing what happens if things go well, okay, or badly</li>
-          <li>A clear look at whether you actually make money on each customer</li>
-          <li>A pricing review — are you charging enough?</li>
-          <li>An investor-ready story behind your numbers</li>
-          <li>A plain-English summary you can defend in any meeting</li>
-        </ul>
-        <div class="service-meta">
-          <div>
-            <div class="service-meta-k">Turnaround</div>
-            <div class="service-meta-v">24 hours</div>
-          </div>
-          <div>
-            <div class="service-meta-k">Format</div>
-            <div class="service-meta-v">Full dossier</div>
-          </div>
+        <div class="outcome-cell">
+          <div class="outcome-num">03</div>
+          <h3>Financial planning</h3>
+          <p>Plan for good, okay, and bad. Three simple scenarios so your next hire, deal, or raise isn't a gamble.</p>
         </div>
-        <div class="service-cta">
-          <span class="service-cta-text">Start my Deep Dive</span>
-          <span class="service-cta-arrow">→</span>
+        <div class="outcome-cell">
+          <div class="outcome-num">04</div>
+          <h3>Investor readiness</h3>
+          <p>Walk into any pitch with numbers you can defend. A clean financial story investors believe — built before they ask.</p>
         </div>
-      </a>
+        <div class="outcome-cell outcome-cell-wide">
+          <div class="outcome-num">05</div>
+          <h3>Tax &amp; compliance support</h3>
+          <p>Stay clean before it becomes a problem. We flag what's missing, what's risky, and what to file — before due diligence catches it.</p>
+        </div>
+      </div>
 
-      <a class="service-card" href="founder-call.html">
-        <div class="service-eyebrow">
-          <span>AI-CFO · Tier III</span>
-          <span class="service-num">03 / 03</span>
-        </div>
-        <h3>AI-CFO<br>Founder Call</h3>
-        <div class="svc-price">
-          <span class="svc-price-old">$500</span>
-          <span class="svc-price-now">$349</span>
-          <span class="svc-price-tag">Introductory pricing</span>
-        </div>
-        <p class="svc-desc">The Deep Dive, plus a 90-minute working session to walk through every number with our team.</p>
-        <ul class="service-list">
-          <li>Everything in the Deep Dive</li>
-          <li>A 90-minute call to talk it all through</li>
-          <li>We walk you through your model line by line</li>
-          <li>Practice your investor pitch with us</li>
-          <li>Direct follow-ups with our team after the call</li>
-        </ul>
-        <div class="service-meta">
-          <div>
-            <div class="service-meta-k">Turnaround</div>
-            <div class="service-meta-v">24 hours + call</div>
-          </div>
-          <div>
-            <div class="service-meta-k">Format</div>
-            <div class="service-meta-v">Dossier &amp; live</div>
-          </div>
-        </div>
-        <div class="service-cta">
-          <span class="service-cta-text">Book my Founder Call</span>
-          <span class="service-cta-arrow">→</span>
-        </div>
-      </a>
-
+      <div class="mini-cta-row mini-cta-center">
+        <a href="snapshot.html" class="btn btn-primary"><span>See your financial blind spots</span><span class="btn-arrow-icon">→</span></a>
+      </div>
     </div>
+
+    <!-- ────── TAB 03 ────── -->
+    <div class="tab-panel" id="tab-03" role="tabpanel" aria-labelledby="tab-btn-03" hidden>
+
+      <div class="mini-hero">
+        <span class="eyebrow"><span class="dot"></span>03 — Why You Can Trust This</span>
+        <h2>A real CFO signs off<br>on <em>every report.</em></h2>
+        <p class="lede">AI does the grunt work. Senior finance professionals make every call that reaches you.</p>
+      </div>
+
+      <div class="trust-steps">
+        <div class="trust-step">
+          <div class="trust-step-num">1</div>
+          <h4>You upload your numbers.</h4>
+          <p>P&amp;L, bank statements, cap table — whatever you have.</p>
+        </div>
+        <div class="trust-step">
+          <div class="trust-step-num">2</div>
+          <h4>AI structures the messy data.</h4>
+          <p>In minutes, not weeks.</p>
+        </div>
+        <div class="trust-step">
+          <div class="trust-step-num">3</div>
+          <h4>A senior CFO reviews everything.</h4>
+          <p>Every number, every recommendation.</p>
+        </div>
+        <div class="trust-step">
+          <div class="trust-step-num">4</div>
+          <h4>You get a written report in 24 hours.</h4>
+          <p>Signed off by a human, every time.</p>
+        </div>
+      </div>
+
+      <div class="trust-split">
+        <div class="trust-half">
+          <span class="eyebrow"><span class="dot"></span>What AI does</span>
+          <h3>The grunt work.</h3>
+          <p>Reading messy spreadsheets. Structuring data. Spotting patterns. Drafting first-pass analysis.</p>
+        </div>
+        <div class="trust-half trust-half-dark">
+          <span class="eyebrow"><span class="dot"></span>What humans do</span>
+          <h3>Every call.</h3>
+          <p>Every recommendation. Every number that reaches you. Every judgment about your business.</p>
+        </div>
+      </div>
+
+      <div class="trust-statement">
+        <p>We don't pretend AI replaces a CFO. We use it to make a real CFO <strong>10x faster — and 70% cheaper.</strong></p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-cell">
+          <h4>Built for first-time founders.</h4>
+          <p>If you're pre-seed to Series A and can't justify a $200k/year CFO yet, this is for you. We've spent years inside funds and financial institutions. Most early founders never get that. We built this to close the gap.</p>
+        </div>
+        <div class="trust-cell">
+          <h4>Your numbers stay yours.</h4>
+          <ul class="trust-list">
+            <li>Reviewed under NDA-equivalent terms</li>
+            <li>Never used to train models. Ever.</li>
+            <li>Deleted on request</li>
+            <li>Every report signed off by a senior CFO</li>
+          </ul>
+        </div>
+        <div class="trust-cell">
+          <h4>If something doesn't add up, we say so.</h4>
+          <p>We don't fill gaps with guesses. If a number looks off, we flag it. If we don't have enough data to answer something, we tell you what to send next.</p>
+        </div>
+      </div>
+
+      <div class="mini-cta-row mini-cta-center">
+        <a href="snapshot.html" class="btn btn-primary"><span>Get my free finance audit</span><span class="btn-arrow-icon">→</span></a>
+        <a href="founder-call.html" class="btn btn-ghost">Talk to a CFO</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ─────────── WHY THIS MATTERS ─────────── -->
-<section class="section" id="why">
-  <div class="container">
-    <div class="section-head">
-      <div class="label">
-        <span class="eyebrow"><span class="dot"></span>02 — Why It Matters</span>
-        <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--mute);">WHY THIS MATTERS</span>
-      </div>
-      <div>
-        <h2>Most founder mistakes are <em style="font-family: var(--serif); font-style: italic; color: var(--gold);">money mistakes</em> in disguise.</h2>
-        <p class="lede" style="margin-top: 24px;">
-          Hiring, pricing, fundraising, growth — they all look like business decisions. They're really money decisions. A CFO's job is to make those decisions clearly.
-        </p>
-      </div>
+<!-- ─────────── STICKY FOOTER CTA ─────────── -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="container sticky-cta-inner">
+    <div class="sticky-cta-text">
+      <strong>Start with a free Snapshot.</strong>
+      <span>24 hours. No card. CFO-reviewed.</span>
     </div>
-
-    <div class="why-grid">
-      <div class="why-cell">
-        <div class="why-num">01 / Spend with confidence</div>
-        <h3>Know what each dollar is buying</h3>
-        <p>Every dollar you spend is a dollar you can't spend on something else. We help you see what each one is actually buying you — and whether it's worth it.</p>
-      </div>
-      <div class="why-cell">
-        <div class="why-num">02 / Know how long your cash lasts</div>
-        <h3>You probably have less time than you think</h3>
-        <p>Most founders overestimate their cash by two to four months. We show you exactly how many months you really have, and what changes when you adjust spending.</p>
-      </div>
-      <div class="why-cell">
-        <div class="why-num">03 / Know if you're actually making money</div>
-        <h3>Growing fast isn't the same as making money</h3>
-        <p>If you lose money on every customer, growth makes things worse, not better. We help you see the real picture per customer.</p>
-      </div>
-      <div class="why-cell">
-        <div class="why-num">04 / Tell a story investors believe</div>
-        <h3>Investors don't fund vibes</h3>
-        <p>They fund founders who can explain their numbers simply and clearly. The same business, with and without that story, raises at very different prices.</p>
-      </div>
-      <div class="why-cell">
-        <div class="why-num">05 / Charge the right price</div>
-        <h3>A small price change beats a lot of hard work</h3>
-        <p>Raising your price by just 1% often does more for your profit than working 10% harder. We help you find where you're leaving money on the table.</p>
-      </div>
-      <div class="why-cell">
-        <div class="why-num">06 / Be ready when an investor says yes</div>
-        <h3>When an offer comes, you have days, not months</h3>
-        <p>Clean numbers and a clear plan are the difference between a great deal and a bad one. We get you ready before the moment arrives.</p>
-      </div>
-    </div>
+    <a href="snapshot.html" class="btn btn-primary"><span>Get my Snapshot</span><span class="btn-arrow-icon">→</span></a>
   </div>
-</section>
-
-<!-- ─────────── COST OF WAITING ─────────── -->
-<section class="costs" id="cost">
-  <div class="container">
-    <div class="section-head">
-      <div class="label">
-        <span class="eyebrow" style="color: var(--gold-soft);"><span class="dot"></span>03 — The Cost of Waiting</span>
-        <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: rgba(247,244,237,0.5);">WHAT IT COSTS TO PUT THIS OFF</span>
-      </div>
-      <div>
-        <h2 style="color: var(--paper);">Putting this off is more <em style="font-style: italic; color: var(--gold-soft);">expensive</em> than you think.</h2>
-        <p class="lede">Four things we see again and again in founders who waited a year too long. None of them are dramatic — and all of them are avoidable.</p>
-      </div>
-    </div>
-
-    <div class="costs-list">
-      <div class="costs-row">
-        <div class="num">/ I</div>
-        <h3>Raising less than<br>your company is worth</h3>
-        <p>When you raise without a clear financial story, investors offer you less. We've seen founders lose 30–55% of their company's value just because the numbers weren't ready.</p>
-      </div>
-      <div class="costs-row">
-        <div class="num">/ II</div>
-        <h3>Hiring people you can't<br>actually afford</h3>
-        <p>It's easy to hire based on what's coming in. What matters is what's left after costs. Hiring too fast usually ends in painful layoffs six months later.</p>
-      </div>
-      <div class="costs-row">
-        <div class="num">/ III</div>
-        <h3>Big customers who<br>quietly lose you money</h3>
-        <p>Some of your biggest customers cost more to serve than they pay you. You wouldn't believe how often. A clear look at the numbers shows this in the first week.</p>
-      </div>
-      <div class="costs-row">
-        <div class="num">/ IV</div>
-        <h3>Signing a deal that quietly<br>takes your company from you</h3>
-        <p>Investor contracts have small print that matters a lot. The wrong clause can mean walking away with far less than you expected, even after a great exit. Knowing this before you sign is the difference between winning and just selling.</p>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- ─────────── FOOTER ─────────── -->
 <footer class="footer" id="contact">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href="https://acumenadvisors.vercel.app/" class="brand footer-brand" aria-label="Acumen Advisors — home">
+        <a href="/" class="brand footer-brand" aria-label="Acumen Advisors — home">
           <img class="brand-logo brand-logo-lg" src="assets/acumen-logo.png" alt="Acumen Advisors">
         </a>
         <p style="font-size: 14px; color: var(--mute); max-width: 38ch; line-height: 1.55;">
-          Built by Senior Finance Professionals. Made simple for founders. We've worked with investment funds and financial institutions for years — now we're here for you.
+          Senior finance professionals, made simple for founders. CFO-reviewed answers in 24 hours.
         </p>
       </div>
       <div>
         <h4>AI-CFO</h4>
         <ul>
-          <li><a href="snapshot.html">Snapshot</a></li>
-          <li><a href="deep-dive.html">Deep Dive</a></li>
-          <li><a href="founder-call.html">Founder Call</a></li>
+          <li><a href="snapshot.html">Snapshot — Free</a></li>
+          <li><a href="deep-dive.html">Deep Dive — $99</a></li>
+          <li><a href="founder-call.html">Founder Call — $349</a></li>
         </ul>
       </div>
       <div>
-        <h4>What Else We Do</h4>
+        <h4>Explore</h4>
         <ul>
-          <li><a href="#">Part-time CFO for your team</a></li>
-          <li><a href="#">What's your company worth?</a></li>
-          <li><a href="#">Financial models</a></li>
-          <li><a href="#">Help during a fundraise or sale</a></li>
+          <li><a href="#tab-01" data-tab-link="01">Understand</a></li>
+          <li><a href="#tab-02" data-tab-link="02">What We Do</a></li>
+          <li><a href="#tab-03" data-tab-link="03">Why Trust This</a></li>
         </ul>
       </div>
       <div>
@@ -316,31 +287,84 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 <a href="https://acumenadvisors.vercel.app/" class="footer-brand-link">Acumen Advisors</a></span>
-      <span>Built by Senior Finance Professionals· Made simple for founders</span>
+      <span>© 2026 Acumen Advisors</span>
+      <span>Senior finance professionals · Made simple for founders</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Mobile nav toggle
+  // ─── Mobile nav toggle ───
   (function () {
     var btn = document.querySelector('.nav-toggle');
     var links = document.getElementById('primary-nav');
-    if (!btn || !links) return;
-    btn.addEventListener('click', function () {
-      var open = links.classList.toggle('is-open');
-      btn.classList.toggle('is-open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (btn && links) {
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('is-open');
+        btn.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          links.classList.remove('is-open');
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  })();
+
+  // ─── Tab switcher ───
+  (function () {
+    var tabBtns = document.querySelectorAll('.tab-btn');
+    var panels  = document.querySelectorAll('.tab-panel');
+    var tabLinks = document.querySelectorAll('[data-tab-link]');
+
+    function activate(tabId) {
+      tabBtns.forEach(function (b) {
+        var on = b.getAttribute('data-tab') === tabId;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(function (p) {
+        var on = p.id === 'tab-' + tabId;
+        p.classList.toggle('is-active', on);
+        if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+      });
+      // Scroll tabs into view on mobile when switching
+      if (window.innerWidth < 860) {
+        var section = document.querySelector('.tabs-section');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    tabBtns.forEach(function (b) {
+      b.addEventListener('click', function () { activate(b.getAttribute('data-tab')); });
     });
-    // Close menu when a nav link is tapped
-    links.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        links.classList.remove('is-open');
-        btn.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
+
+    tabLinks.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        activate(a.getAttribute('data-tab-link'));
+        var section = document.querySelector('.tabs-section');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+
+    // Open from URL hash, e.g. /#tab-02
+    var hash = window.location.hash.replace('#tab-', '');
+    if (['01','02','03'].indexOf(hash) > -1) activate(hash);
+  })();
+
+  // ─── Sticky CTA fade-in after hero ───
+  (function () {
+    var cta = document.getElementById('sticky-cta');
+    var hero = document.querySelector('.hero');
+    if (!cta || !hero) return;
+    window.addEventListener('scroll', function () {
+      var heroBottom = hero.offsetTop + hero.offsetHeight;
+      cta.classList.toggle('is-visible', window.scrollY > heroBottom - 100);
+    }, { passive: true });
   })();
 </script>
 
