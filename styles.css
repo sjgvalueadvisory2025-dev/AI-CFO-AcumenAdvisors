@@ -1815,9 +1815,11 @@ h2 em { font-style: normal; color: var(--gold); font-weight: 600; }
   .trust-split { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: 1fr; }
 
-  .sticky-cta-inner { flex-direction: column; gap: 10px; }
-  .sticky-cta-text { text-align: center; align-items: center; }
-  .sticky-cta .btn { width: 100%; justify-content: center; }
+.sticky-cta { padding: 10px 0; }
+  .sticky-cta-inner { flex-direction: row; gap: 12px; align-items: center; }
+  .sticky-cta-text strong { font-size: 13px; }
+  .sticky-cta-text span { display: none; } /* hide the subtitle line */
+  .sticky-cta .btn { padding: 9px 16px; font-size: 12px; white-space: nowrap; flex-shrink: 0; }
 }
 
 @media (max-width: 640px) {
