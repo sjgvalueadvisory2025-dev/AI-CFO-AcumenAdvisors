@@ -1827,3 +1827,162 @@ h2 em { font-style: normal; color: var(--gold); font-weight: 600; }
   .trust-steps { grid-template-columns: 1fr; }
   .mini-hero { padding-bottom: 32px; }
 }
+/* ============================================================
+   PLANS & PRICING TAB
+   ============================================================ */
+
+/* 4-column tab bar variant */
+.tab-bar.tab-bar-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Pricing comparison table */
+.pricing-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--ink);
+  margin-bottom: 32px;
+  -webkit-overflow-scrolling: touch;
+}
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  min-width: 720px;
+}
+.pricing-table th,
+.pricing-table td {
+  padding: 16px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--rule-soft);
+  border-right: 1px solid var(--rule-soft);
+  font-size: 14px;
+  vertical-align: middle;
+}
+.pricing-table th:last-child,
+.pricing-table td:last-child { border-right: none; }
+.pricing-table tbody th,
+.pricing-table .pt-feature-col {
+  text-align: left;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--paper-2);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+.pricing-table thead th { background: var(--paper); padding: 24px 20px; }
+.pricing-table tfoot td { background: var(--paper); padding: 24px 16px; border-bottom: none; }
+
+.pt-tier { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.pt-tier-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.pt-tier-price {
+  font-family: var(--sans);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  margin-top: 2px;
+}
+.pt-tier-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-top: 4px;
+}
+
+/* Featured column highlight */
+.pricing-table thead th.pt-featured,
+.pricing-table tbody td.pt-featured,
+.pricing-table tfoot td.pt-featured {
+  background: rgba(42, 95, 217, 0.04);
+  border-left: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+}
+.pricing-table thead th.pt-featured { border-top: 2px solid var(--gold); }
+.pricing-table tfoot td.pt-featured { border-bottom: 2px solid var(--gold); }
+
+.pt-check {
+  display: inline-grid; place-items: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 600;
+}
+.pt-dash {
+  color: var(--mute);
+  font-family: var(--mono);
+  opacity: 0.5;
+}
+
+.pt-cta { width: 100%; justify-content: center; padding: 12px 18px; font-size: 13px; }
+
+/* Explore-plans tile */
+.plans-explore-tile {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 32px 36px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 32px;
+  transition: transform .2s ease, background .2s ease;
+}
+.plans-explore-tile:hover { background: var(--navy-700); transform: translateY(-2px); }
+.plans-explore-tile .eyebrow { color: var(--gold-soft); margin-bottom: 12px; display: inline-block; }
+.plans-explore-tile h3 {
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 26px;
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+.plans-explore-tile p {
+  color: rgba(247,244,237,0.72);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 60ch;
+}
+.plans-explore-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.plans-explore-cta {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.plans-explore-arrow {
+  font-size: 20px;
+  transition: transform .2s ease;
+}
+.plans-explore-tile:hover .plans-explore-arrow { transform: translateX(6px); }
+
+@media (max-width: 860px) {
+  .tab-bar.tab-bar-4 { grid-template-columns: 1fr; }
+  .pricing-table th,
+  .pricing-table td { padding: 12px 14px; font-size: 13px; }
+  .pt-tier-name { font-size: 17px; }
+  .pt-tier-price { font-size: 22px; }
+  .plans-explore-tile {
+    grid-template-columns: 1fr;
+    padding: 24px 22px;
+    gap: 20px;
+  }
+  .plans-explore-right { justify-content: space-between; }
+}
