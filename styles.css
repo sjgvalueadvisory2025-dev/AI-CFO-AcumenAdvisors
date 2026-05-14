@@ -1988,3 +1988,177 @@ h2 em { font-style: normal; color: var(--gold); font-weight: 600; }
   }
   .plans-explore-right { justify-content: space-between; }
 }
+
+/* ============================================================
+   BREATHING-ROOM PASS
+   Softer borders, more padding, calmer hover, better mobile.
+   Lives at the end so it wins the cascade.
+   ============================================================ */
+
+/* Reserve room at the bottom so the sticky CTA never crowds content */
+body { padding-bottom: 88px; }
+
+/* Calmer eyebrow — still legible, less shouty */
+.eyebrow { letter-spacing: 0.14em; font-size: 11px; }
+
+/* Lede gets more line-height for easier reading */
+.lede { line-height: 1.65; }
+
+/* Slightly softer hero on desktop */
+.hero-tight { padding: 80px 0 56px; }
+.hero-h1-tight { font-size: clamp(48px, 6.4vw, 84px); margin: 20px 0 28px; }
+.hero-lede-tight { font-size: 18px; line-height: 1.65; max-width: 54ch; }
+
+/* Tabs section — breathing room above sticky tab bar */
+.tabs-section { padding: 24px 0 96px; }
+.tab-bar { margin-bottom: 56px; }
+
+/* Mini-hero: more space, more air around the headline */
+.mini-hero { padding: 32px 0 56px; max-width: 720px; }
+.mini-hero h2 { margin: 20px 0 22px; line-height: 1.08; }
+.mini-hero .lede { font-size: 18px; }
+
+/* Problem grid — looser, friendlier */
+.problem-cell { padding: 40px 32px; }
+.problem-cell h3 { font-size: 19px; line-height: 1.3; margin-bottom: 10px; }
+.problem-cell p { line-height: 1.65; }
+.problem-cell .problem-num { margin-bottom: 18px; }
+
+/* Outcomes: drop the heavy black borders, soften the hover state */
+.outcome-grid {
+  border-top-color: var(--rule-soft);
+  border-left-color: var(--rule-soft);
+}
+.outcome-cell {
+  border-right-color: var(--rule-soft);
+  border-bottom-color: var(--rule-soft);
+  padding: 40px 32px;
+  transition: background .2s ease;
+}
+.outcome-cell:hover { background: var(--paper-2); color: inherit; }
+.outcome-cell:hover h3,
+.outcome-cell:hover p { color: inherit; }
+.outcome-cell:hover .outcome-num { color: var(--gold); }
+.outcome-cell h3 { margin-bottom: 12px; line-height: 1.25; }
+.outcome-cell p { line-height: 1.65; }
+
+/* Trust section — more padding, calmer */
+.trust-steps { margin-bottom: 56px; }
+.trust-step { padding: 32px 26px; }
+.trust-half { padding: 44px 36px; }
+.trust-statement { padding: 44px 32px; margin-bottom: 56px; }
+.trust-grid { gap: 24px; }
+.trust-cell { padding: 32px; }
+.trust-cell p { line-height: 1.65; }
+
+/* How-block — gentler, less squeezed */
+.how-block { padding: 72px 0 24px; }
+.how-block h3 { margin-bottom: 36px; }
+.how-step { padding: 32px 28px; }
+.how-step p { line-height: 1.65; }
+
+/* Sticky CTA: a touch shorter, more comfortable */
+.sticky-cta { padding: 14px 0; }
+
+/* ─── Mobile (≤ 860px) ─── */
+@media (max-width: 860px) {
+  body { padding-bottom: 72px; }
+
+  .hero-tight { padding: 40px 0 24px; }
+  .hero-h1-tight {
+    font-size: clamp(38px, 9.5vw, 54px);
+    line-height: 1.04;
+    margin: 14px 0 18px;
+  }
+  .hero-lede-tight { font-size: 16px; margin-bottom: 24px; }
+
+  .tabs-section { padding: 16px 0 64px; }
+  .tab-bar { margin-bottom: 40px; }
+  .tab-btn {
+    padding: 16px 18px;
+    min-height: 56px;
+    gap: 12px;
+  }
+  .tab-btn .tab-num { font-size: 10px; min-width: 22px; }
+  .tab-btn .tab-label { font-size: 15px; }
+
+  .mini-hero { padding: 24px 0 36px; }
+  .mini-hero h2 {
+    font-size: clamp(26px, 7vw, 34px);
+    margin: 12px 0 16px;
+  }
+  .mini-hero .lede { font-size: 15px; }
+
+  .problem-cell { padding: 26px 20px; }
+  .problem-cell h3 { font-size: 17px; }
+  .problem-cell p { font-size: 13.5px; }
+
+  .outcome-cell { padding: 28px 22px; }
+  .outcome-cell h3 { font-size: 19px; }
+  .outcome-cell p { font-size: 14px; }
+
+  .trust-step { padding: 22px 20px; }
+  .trust-half { padding: 28px 24px; }
+  .trust-half h3 { font-size: 24px; }
+  .trust-statement { padding: 28px 22px; margin-bottom: 36px; }
+  .trust-statement p { font-size: 17px; line-height: 1.45; }
+  .trust-cell { padding: 24px 22px; }
+
+  .how-block { padding: 48px 0 8px; }
+  .how-block h3 { font-size: 22px; margin-bottom: 24px; }
+  .how-step { padding: 22px 20px; }
+  .how-step-num { font-size: 26px; margin-bottom: 8px; }
+  .how-step h4 { font-size: 17px; }
+  .how-step p { font-size: 13.5px; }
+
+  /* Plans tile gets calmer on mobile */
+  .plans-explore-tile h3 { font-size: 22px; }
+  .plans-explore-tile p { font-size: 13.5px; }
+}
+
+/* ─── Phone (≤ 640px) ─── */
+@media (max-width: 640px) {
+  body { padding-bottom: 68px; }
+
+  .hero-tight { padding: 32px 0 16px; }
+  .hero-h1-tight { font-size: clamp(36px, 10.5vw, 48px); }
+  .hero-lede-tight { font-size: 15.5px; }
+
+  .mini-hero h2 { font-size: clamp(24px, 7.5vw, 30px); }
+  .mini-hero .lede { font-size: 14.5px; line-height: 1.6; }
+
+  .problem-cell { padding: 22px 18px; }
+  .problem-cell h3 { font-size: 16px; }
+  .outcome-cell { padding: 24px 18px; }
+  .outcome-cell h3 { font-size: 17px; }
+
+  .trust-step { padding: 20px 18px; }
+  .trust-step h4 { font-size: 15px; }
+  .trust-cell { padding: 22px 20px; }
+  .trust-cell h4 { font-size: 17px; }
+  .trust-statement p { font-size: 16px; }
+
+  /* Pricing table: more compact, less cramped */
+  .pricing-table { min-width: 560px; }
+  .pricing-table th,
+  .pricing-table td { padding: 10px 10px; font-size: 12px; }
+  .pricing-table thead th { padding: 16px 10px; }
+  .pricing-table tfoot td { padding: 16px 10px; }
+  .pt-tier-name { font-size: 15px; }
+  .pt-tier-price { font-size: 19px; }
+  .pt-tier-sub { font-size: 9px; }
+  .pt-check { width: 18px; height: 18px; font-size: 10px; }
+
+  /* Sticky CTA stays compact */
+  .sticky-cta { padding: 8px 0; }
+  .sticky-cta-text strong { font-size: 13px; }
+  .sticky-cta .btn { padding: 8px 14px; font-size: 12px; }
+}
+
+/* ─── Very small phones (≤ 380px) ─── */
+@media (max-width: 380px) {
+  :root { --gutter: 14px; }
+  .hero-h1-tight { font-size: clamp(32px, 11vw, 42px); }
+  .tab-btn { padding: 14px 14px; min-height: 52px; }
+  .tab-btn .tab-label { font-size: 14px; }
+}
