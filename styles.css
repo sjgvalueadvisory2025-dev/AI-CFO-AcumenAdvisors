@@ -1791,21 +1791,47 @@ h2 em { font-style: normal; color: var(--gold); font-weight: 600; }
 
 /* ─── Responsive: tabs ─── */
 @media (max-width: 860px) {
-  .tab-bar {
-    grid-template-columns: 1fr;
-    top: 60px;
+  /* Tab bar: no longer sticky on mobile (was eating ~40% of viewport).
+     Lay tabs out as a compact horizontal strip; the tab-switch JS
+     already scrolls the section back to the top, so persistent
+     sticky nav isn't needed on small screens. */
+  .tabs-section .container {
+    position: relative;
   }
+  .tab-bar,
+  .tab-bar.tab-bar-4 {
+    position: static;
+    top: auto;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 1px solid var(--ink);
+    /* Soft fade on the right edge to hint at scrollability */
+    -webkit-mask-image: linear-gradient(to right, black 90%, transparent);
+            mask-image: linear-gradient(to right, black 90%, transparent);
+  }
+  .tab-bar::-webkit-scrollbar,
+  .tab-bar.tab-bar-4::-webkit-scrollbar { display: none; }
+
   .tab-btn {
-    border-right: none;
-    border-bottom: 1px solid var(--rule-soft);
-    padding: 16px 20px;
+    flex: 0 0 auto;
+    border-right: 1px solid var(--rule-soft);
+    border-bottom: none;
+    padding: 14px 18px;
     flex-direction: row;
     align-items: center;
-    gap: 14px;
+    gap: 8px;
+    min-height: auto;
+    white-space: nowrap;
   }
-  .tab-btn:last-child { border-bottom: none; }
+  .tab-btn:last-child { border-right: none; }
   .tab-btn.is-active::after { display: none; }
-  .tab-btn .tab-label { font-size: 16px; }
+  .tab-btn .tab-num { font-size: 10px; opacity: 0.7; }
+  .tab-btn .tab-label { font-size: 14px; }
 
   .problem-grid { grid-template-columns: 1fr; }
   .how-row { grid-template-columns: 1fr; }
@@ -2072,15 +2098,8 @@ body { padding-bottom: 88px; }
   }
   .hero-lede-tight { font-size: 16px; margin-bottom: 24px; }
 
-  .tabs-section { padding: 16px 0 64px; }
+  .tabs-section { padding: 0 0 64px; }
   .tab-bar { margin-bottom: 40px; }
-  .tab-btn {
-    padding: 16px 18px;
-    min-height: 56px;
-    gap: 12px;
-  }
-  .tab-btn .tab-num { font-size: 10px; min-width: 22px; }
-  .tab-btn .tab-label { font-size: 15px; }
 
   .mini-hero { padding: 24px 0 36px; }
   .mini-hero h2 {
@@ -2159,6 +2178,6 @@ body { padding-bottom: 88px; }
 @media (max-width: 380px) {
   :root { --gutter: 14px; }
   .hero-h1-tight { font-size: clamp(32px, 11vw, 42px); }
-  .tab-btn { padding: 14px 14px; min-height: 52px; }
-  .tab-btn .tab-label { font-size: 14px; }
+  .tab-btn { padding: 12px 14px; }
+  .tab-btn .tab-label { font-size: 13px; }
 }
