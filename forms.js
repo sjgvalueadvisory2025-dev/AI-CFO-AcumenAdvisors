@@ -1,5 +1,5 @@
 /* ============================================================
-   Acumen Advisors — AI-CFO form interactions
+   Acumen Advisors — Acumen CFO form interactions
    - Real OTP via /api/send-otp (Resend)
    - Real submission via /api/submit (Resend with attachments)
    ============================================================ */

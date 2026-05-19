@@ -7,8 +7,8 @@ const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const MAX_TOTAL_SIZE = 25 * 1024 * 1024;
 
 const SERVICE_LABELS = {
-  'deep-dive': 'AI-CFO Deep Dive',
-  'founder-call': 'AI-CFO Founder Call',
+  'deep-dive': 'Acumen CFO Deep Dive',
+  'founder-call': 'Acumen CFO Founder Call',
 };
 
 function isValidEmail(v) {
@@ -170,7 +170,7 @@ module.exports = async function handler(req, res) {
 
   const html = `
     <div style="font-family:'Inter',-apple-system,sans-serif;color:#1a1a1a;max-width:640px;margin:0 auto;padding:24px;">
-      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#7a7568;">Acumen Advisors · AI-CFO Intake</div>
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#7a7568;">Acumen CFO · Intake</div>
       <h1 style="font-size:22px;margin:6px 0 16px;font-weight:600;">${escapeHtml(tierLabel)} — new request</h1>
       <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:18px;">
         <tr><td style="padding:8px 0;color:#7a7568;width:160px;">Service tier</td><td style="padding:8px 0;"><strong>${escapeHtml(tierLabel)}</strong></td></tr>
@@ -187,7 +187,7 @@ module.exports = async function handler(req, res) {
           : '<span style="color:#7a7568;">(no files attached)</span>'}
       </div>
       <p style="color:#7a7568;font-size:12px;margin-top:18px;">
-        Submitted ${new Date().toISOString()} · Acumen Advisors AI-CFO intake
+        Submitted ${new Date().toISOString()} · Acumen CFO intake
       </p>
     </div>
   `;

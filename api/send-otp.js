@@ -46,9 +46,9 @@ module.exports = async function handler(req, res) {
   const token = sign(`${email}|${otp}|${expires}`, OTP_SECRET);
 
   const tierLabel = ({
-    'deep-dive': 'AI-CFO Deep Dive',
-    'founder-call': 'AI-CFO Founder Call',
-  })[service] || 'AI-CFO';
+    'deep-dive': 'Acumen CFO Deep Dive',
+    'founder-call': 'Acumen CFO Founder Call',
+  })[service] || 'Acumen CFO';
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',

@@ -1,4 +1,4 @@
-# Acumen Advisors — AI-CFO
+# Acumen Advisors — Acumen CFO
 
 Static landing site (`index.html` + supporting pages) plus two Vercel serverless
 endpoints that:
@@ -7,7 +7,7 @@ endpoints that:
    (`/api/send-otp`), using Nodemailer.
 2. Email the full submission **with all uploaded files attached** to your
    inbox via Gmail SMTP (`/api/submit`). The service tier is included in
-   the email subject (`[AI-CFO Deep Dive]` or `[AI-CFO Founder Call]`) so
+   the email subject (`[Acumen CFO Deep Dive]` or `[Acumen CFO Founder Call]`) so
    you always know which one the founder selected. The founder's verified
    email is set as `reply-to`, so hitting "Reply" goes straight to them.
 
@@ -19,8 +19,8 @@ endpoints that:
 ├── index.html              # landing page (links to the form pages)
 ├── discovery-call.html     # free discovery-call booking page
 ├── plans.html              # full plan comparison page
-├── deep-dive.html          # AI-CFO Deep Dive (Tier I)  — data-service="deep-dive"
-├── founder-call.html       # AI-CFO Founder Call (II)   — data-service="founder-call"
+├── deep-dive.html          # Acumen CFO Deep Dive (Tier I)  — data-service="deep-dive"
+├── founder-call.html       # Acumen CFO Founder Call (II)   — data-service="founder-call"
 ├── styles.css
 ├── forms.js                # client-side OTP + submission logic
 ├── api/
@@ -64,7 +64,7 @@ apps. You need to generate an **App Password**:
 1. Make sure **2-Step Verification** is enabled on the Google account:
    <https://myaccount.google.com/security>
 2. Visit <https://myaccount.google.com/apppasswords>.
-3. Create an App Password (any name, e.g. "Acumen AI-CFO Vercel").
+3. Create an App Password (any name, e.g. "Acumen CFO Vercel").
 4. Google will show you a 16-character password like `abcd efgh ijkl mnop`.
    Copy it (spaces are fine — you can keep or remove them).
 5. Paste that as `GMAIL_PASS` in Vercel.
@@ -83,7 +83,7 @@ apps. You need to generate an **App Password**:
 ```bash
    git init
    git add .
-   git commit -m "Initial AI-CFO site + Gmail API"
+   git commit -m "Initial Acumen CFO site + Gmail API"
    git branch -M main
    git remote add origin git@github.com:<you>/<repo>.git
    git push -u origin main
@@ -124,8 +124,8 @@ Copy `.env.example` to `.env.local` and fill in real values. Then visit
 
 ## Email format you'll receive
 
-**Subject:** `[AI-CFO Deep Dive] New request — Northwind Logistics, Inc.`
-(prefix is one of `[AI-CFO Deep Dive]`, `[AI-CFO Founder Call]`)
+**Subject:** `[Acumen CFO Deep Dive] New request — Northwind Logistics, Inc.`
+(prefix is one of `[Acumen CFO Deep Dive]`, `[Acumen CFO Founder Call]`)
 
 **Body** includes the founder, company, website, verified email, business
 description, a list of attached files with sizes, and the submission timestamp.
@@ -162,8 +162,8 @@ the two service intake forms:
 | CTA / Card             | href                  |
 |------------------------|-----------------------|
 | Book a Free Call       | `discovery-call.html` |
-| AI-CFO Deep Dive       | `deep-dive.html`      |
-| AI-CFO Founder Call    | `founder-call.html`   |
+| Acumen CFO Deep Dive       | `deep-dive.html`      |
+| Acumen CFO Founder Call    | `founder-call.html`   |
 
 Each form page declares `data-service="..."` on its `<form>`, so `forms.js`
 sends the right tier to the API automatically. The discovery-call page is a
