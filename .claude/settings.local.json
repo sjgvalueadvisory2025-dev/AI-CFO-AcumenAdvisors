@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:api.anthropic.com)",
-      "Bash(cd \"/mnt/c/Users/Jill/.claude/projects/C--Users-Jill-Desktop-Claude-AI-CFO-system-Code/be323220-618e-4c28-9d09-b1be7ec84953/tool-results/\" && ls -la)"
+      "Bash(cd \"/mnt/c/Users/Jill/.claude/projects/C--Users-Jill-Desktop-Claude-AI-CFO-system-Code/be323220-618e-4c28-9d09-b1be7ec84953/tool-results/\" && ls -la)",
+      "mcp__c30b0094-2575-4aba-aa27-e6547e4090d9__web_fetch_vercel_url"
     ]
   }
 }
