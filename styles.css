@@ -1283,7 +1283,7 @@ h2 em { font-style: normal; color: var(--gold); font-weight: 600; }
   }
 }
 
-/* ─── Forms (snapshot / deep-dive / founder-call) ─── */
+/* ─── Forms (deep-dive / founder-call) ─── */
 @media (max-width: 980px) {
   .form-page { padding: 48px 0 80px; }
   .form-side { position: static; }
@@ -1408,6 +1408,18 @@ h2 em { font-style: normal; color: var(--gold); font-weight: 600; }
 }
 .hero-cta-row {
   display: flex; gap: 12px; flex-wrap: wrap;
+}
+.cta-note {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mute);
+  max-width: 52ch;
+}
+
+/* ─── CFO profile (below hero) ─── */
+.cfo-intro {
+  padding-top: 8px;
 }
 
 /* ─── Tabs section ─── */

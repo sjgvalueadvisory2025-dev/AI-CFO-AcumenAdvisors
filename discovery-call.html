@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Free Discovery Call — AI-CFO · Acumen Advisors</title>
+  <meta name="description" content="Book a free 20-minute discovery call. A senior CFO listens to your situation and tells you exactly what financial analysis you need — no pitch, no card.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="https://acumenadvisors.vercel.app/" class="brand" aria-label="Acumen Advisors — home">
+      <img class="brand-logo" src="assets/acumen-logo.png" alt="Acumen Advisors">
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <div id="primary-nav" class="nav-links">
+      <a href="index.html#tab-02">Plans</a>
+      <a href="index.html#tab-03">What We Do</a>
+      <a href="index.html#tab-04">Why Trust This</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="form-page">
+  <div class="container">
+
+    <a href="index.html" class="form-back">← Back to home</a>
+
+    <div class="form-head">
+      <div class="form-head-meta">
+        <span class="eyebrow"><span class="dot"></span>AI-CFO · Discovery Call</span>
+        <div class="form-stat">
+          <div class="form-stat-row"><span class="k">Length</span><span class="v">20 minutes</span></div>
+          <div class="form-stat-row"><span class="k">Cost</span><span class="v">Free</span></div>
+          <div class="form-stat-row"><span class="k">Format</span><span class="v">Video or phone</span></div>
+          <div class="form-stat-row"><span class="k">With</span><span class="v">A senior CFO</span></div>
+        </div>
+      </div>
+      <div>
+        <h1>Book a free<br>discovery call.</h1>
+        <p class="lede">20 minutes. We listen to your situation and tell you exactly what you need — no pitch, no card, no obligation.</p>
+      </div>
+    </div>
+
+    <div class="form-grid form-grid-solo">
+      <div class="form-main">
+
+        <div class="field-group">
+          <div class="field-group-head">
+            <span class="field-group-title">What happens on the call</span>
+            <span class="field-group-num">01 / 02</span>
+          </div>
+          <div class="trust-steps">
+            <div class="trust-step">
+              <div class="trust-step-num">1</div>
+              <h4>You talk, we listen.</h4>
+              <p>Tell us where your business is and what's keeping you up at night.</p>
+            </div>
+            <div class="trust-step">
+              <div class="trust-step-num">2</div>
+              <h4>A senior CFO weighs in.</h4>
+              <p>A Chartered Accountant — not a salesperson — gives you a straight read.</p>
+            </div>
+            <div class="trust-step">
+              <div class="trust-step-num">3</div>
+              <h4>You get a clear next step.</h4>
+              <p>We tell you exactly what you need — a Deep Dive, a Founder Call, or nothing yet.</p>
+            </div>
+            <div class="trust-step">
+              <div class="trust-step-num">4</div>
+              <h4>No pressure to buy.</h4>
+              <p>If now isn't the time, we'll say so. The call is genuinely free.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-group-head">
+            <span class="field-group-title">Book your call</span>
+            <span class="field-group-num">02 / 02</span>
+          </div>
+          <!-- Placeholder: a scheduling embed (Calendly / Cal.com) can replace this block once a calendar is connected. -->
+          <p style="font-size: 15px; line-height: 1.7; color: var(--mute); margin-bottom: 24px; max-width: 56ch;">
+            Email us two or three times that work for you this week, plus one line on your business. We'll confirm a 20-minute slot with a senior CFO.
+          </p>
+          <div class="form-submit-row">
+            <span class="form-submit-note">Writing first is the fastest way to lock in a time.</span>
+            <a href="mailto:global.acumenadvisors@gmail.com?subject=Discovery%20Call%20Request" class="btn btn-primary"><span>Book a Free Call</span><span class="btn-arrow-icon">→</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="assurance assurance-bottom">
+      <strong>20 minutes, no obligation.</strong> We listen to your situation and tell you exactly what you need. If that's nothing yet, we'll tell you that too.
+    </p>
+  </div>
+</main>
+
+<script>
+  // Mobile nav toggle
+  (function () {
+    var btn = document.querySelector('.nav-toggle');
+    var links = document.getElementById('primary-nav');
+    if (btn && links) {
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('is-open');
+        btn.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          links.classList.remove('is-open');
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

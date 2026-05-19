@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compare Plans — AI-CFO · Acumen Advisors</title>
-  <meta name="description" content="Compare the three AI-CFO plans: Snapshot (free), Deep Dive ($99), and Founder Call ($349). CFO-reviewed financial analysis in 24 hours.">
+  <meta name="description" content="Compare the two AI-CFO plans: Deep Dive ($349) and Founder Call ($599). CFO-reviewed financial analysis in 24 hours.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
     }
     .plans-subnav-inner {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
     .plans-subnav-btn {
       display: flex;
@@ -412,7 +412,7 @@
       <a href="index.html#tab-02">Plans</a>
       <a href="index.html#tab-03">What We Do</a>
       <a href="index.html#tab-04">Why Trust This</a>
-      <a href="snapshot.html" class="nav-cta">Free Snapshot</a>
+      <a href="/discovery-call.html" class="nav-cta">Book a Free Call</a>
     </div>
   </div>
 </nav>
@@ -424,10 +424,10 @@
     <a href="index.html#tab-02" class="form-back">← Back to Plans &amp; Pricing</a>
     <div class="mini-hero" style="max-width: 800px; padding-bottom: 40px;">
       <span class="eyebrow"><span class="dot"></span>AI-CFO · Plans in full</span>
-      <h2>Three plans.<br><em>One CFO standard.</em></h2>
+      <h2>Two plans.<br><em>One CFO standard.</em></h2>
       <p class="lede">Every plan is reviewed and signed off by a senior CFO before it reaches you. The difference is how deep we go — and whether you want a written answer or a live working session. Pick where you are today.</p>
       <div class="mini-cta-row" style="margin-top: 28px;">
-        <a href="snapshot.html" class="btn btn-primary"><span>Start free — Snapshot</span><span class="btn-arrow-icon">→</span></a>
+        <a href="/discovery-call.html" class="btn btn-primary"><span>Book a Free Call</span><span class="btn-arrow-icon">→</span></a>
         <a href="index.html#tab-02" class="btn btn-ghost">Side-by-side table</a>
       </div>
     </div>
@@ -438,148 +438,32 @@
 <!-- ─────────── STICKY TIER SUB-NAV ─────────── -->
 <nav class="plans-subnav" aria-label="Jump to plan">
   <div class="container plans-subnav-inner">
-    <a href="#snapshot" class="plans-subnav-btn is-active" data-tier="snapshot">
-      <span class="psn-num">Tier I</span>
-      <span class="psn-name">Snapshot</span>
-      <span class="psn-price">Free</span>
-    </a>
-    <a href="#deep-dive" class="plans-subnav-btn" data-tier="deep-dive">
-      <span class="psn-num">Tier II · Most popular</span>
+    <a href="#deep-dive" class="plans-subnav-btn is-active" data-tier="deep-dive">
+      <span class="psn-num">Tier I · Most popular</span>
       <span class="psn-name">Deep Dive</span>
-      <span class="psn-price">$99</span>
+      <span class="psn-price">$349</span>
     </a>
     <a href="#founder-call" class="plans-subnav-btn" data-tier="founder-call">
-      <span class="psn-num">Tier III</span>
+      <span class="psn-num">Tier II</span>
       <span class="psn-name">Founder Call</span>
-      <span class="psn-price">$349</span>
+      <span class="psn-price">$599</span>
     </a>
   </div>
 </nav>
 
 
 <!-- ═══════════════════════════════════════════════════════
-     TIER I — SNAPSHOT
-═══════════════════════════════════════════════════════ -->
-<section id="snapshot" class="plan-block">
-  <div class="container">
-    <div class="plan-block-grid">
-
-      <!-- LEFT: sticky summary -->
-      <aside class="plan-sticky">
-        <span class="eyebrow"><span class="dot"></span>AI-CFO · Tier I</span>
-        <h2 class="plan-name">Snapshot.</h2>
-        <div class="plan-price-row">
-          <span class="plan-price-big">Free</span>
-          <span class="plan-price-note">No card · One-off</span>
-        </div>
-        <div class="plan-stat-list">
-          <div class="plan-stat-row"><span class="k">Turnaround</span><span class="v">24 hours</span></div>
-          <div class="plan-stat-row"><span class="k">Format</span><span class="v">Written report</span></div>
-          <div class="plan-stat-row"><span class="k">Live session</span><span class="v">—</span></div>
-          <div class="plan-stat-row"><span class="k">CFO sign-off</span><span class="v">Every report</span></div>
-          <div class="plan-stat-row"><span class="k">Depth</span><span class="v">Pulse check</span></div>
-          <div class="plan-stat-row"><span class="k">Best for</span><span class="v">Pre-seed · Bootstrapped</span></div>
-        </div>
-        <a href="snapshot.html" class="btn btn-primary"><span>Get free Snapshot</span><span class="btn-arrow-icon">→</span></a>
-        <p style="font-size: 13px; color: var(--mute); line-height: 1.55; margin: 0;">Upload what you have. We tell you how long your money lasts, where it's leaking, and the three things to fix first.</p>
-      </aside>
-
-      <!-- RIGHT: deliverables -->
-      <div class="plan-detail-col">
-
-        <p class="plan-lede">
-          You've been heads-down building. The numbers feel okay but you've never had them stress-tested. You're not raising yet — you just want a real answer before something quietly goes wrong.
-        </p>
-
-        <div>
-          <div class="block-title">What's in the report</div>
-          <ul class="deliverables">
-            <li>
-              <span class="dlv-num">01</span>
-              <div class="dlv-body">
-                <h4>Real runway number</h4>
-                <p>Not what your spreadsheet shows — what's actually true after adjusting for receivables that won't collect on time, costs you forgot, and seasonal spikes ahead. Most founders are off by 2–4 months.</p>
-              </div>
-            </li>
-            <li>
-              <span class="dlv-num">02</span>
-              <div class="dlv-body">
-                <h4>Top 3 cash leaks</h4>
-                <p>The three places money is bleeding faster than it should — ranked by how much you'd save if you fixed them in the next 30 days. Named specifically, not described in categories.</p>
-              </div>
-            </li>
-            <li>
-              <span class="dlv-num">03</span>
-              <div class="dlv-body">
-                <h4>Plain-English finance summary</h4>
-                <p>One page: gross margin direction, burn vs. revenue trajectory, and whether your finances are healthy, fragile, or in trouble. Written so a non-finance founder can act on it immediately.</p>
-              </div>
-            </li>
-            <li>
-              <span class="dlv-num">04</span>
-              <div class="dlv-body">
-                <h4>Three priority fixes</h4>
-                <p>Not "improve cash flow." Specific moves — which subscription to renegotiate this week, which receivable to chase, which expense category to cap — with the expected impact of each.</p>
-              </div>
-            </li>
-            <li>
-              <span class="dlv-num">05</span>
-              <div class="dlv-body">
-                <h4>CFO flags &amp; next-step guidance</h4>
-                <p>If a number doesn't add up or something looks off, the CFO flags it and tells you exactly what to send next. You never get a generic answer when the data is ambiguous.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="block-title">Who this is for</div>
-          <div class="fit-split">
-            <div class="fit-cell yes">
-              <p class="fit-label">✓ Pick Snapshot if</p>
-              <ul>
-                <li>You're pre-seed or bootstrapped</li>
-                <li>You want a real answer before paying for one</li>
-                <li>You have 6+ months of bank statements or a P&amp;L</li>
-                <li>You suspect your numbers aren't the full picture</li>
-              </ul>
-            </div>
-            <div class="fit-cell no">
-              <p class="fit-label">— Skip Snapshot if</p>
-              <ul>
-                <li>You're raising in the next 90 days</li>
-                <li>You need investor-ready financials or a model</li>
-                <li>You want scenario planning or pricing analysis</li>
-                <li>You need a live CFO conversation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="plan-sample">
-          <span class="sample-label">What the report sounds like</span>
-          <blockquote>"Your reported runway is 11 months, but adjusting for the two enterprise contracts at risk of churn in Q1, the realistic floor is closer to 7 months. The single biggest leak is your AWS spend — 38% of compute is allocated to a staging environment nobody has logged into for six weeks."</blockquote>
-          <cite>— Excerpt, anonymized Snapshot report</cite>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     TIER II — DEEP DIVE
+     TIER I — DEEP DIVE
 ═══════════════════════════════════════════════════════ -->
 <section id="deep-dive" class="plan-block is-featured">
   <div class="container">
     <div class="plan-block-grid">
 
       <aside class="plan-sticky">
-        <span class="eyebrow"><span class="dot"></span>AI-CFO · Tier II · Most popular</span>
+        <span class="eyebrow"><span class="dot"></span>AI-CFO · Tier I · Most popular</span>
         <h2 class="plan-name">Deep Dive.</h2>
         <div class="plan-price-row">
-          <span class="plan-price-big">$99</span>
+          <span class="plan-price-big">$349</span>
           <span class="plan-price-note">One-off · 24 hours</span>
         </div>
         <div class="plan-stat-list">
@@ -597,11 +481,11 @@
       <div class="plan-detail-col">
 
         <p class="plan-lede">
-          You're about to raise, make a major hire, or change your pricing. You need numbers you can defend in any room — not a Notion doc cobbled together at 2am. Investors ask questions Snapshot doesn't answer.
+          You're about to raise, make a major hire, or change your pricing. You need numbers you can defend in any room — not a Notion doc cobbled together at 2am. Investors ask questions a surface-level read won't answer.
         </p>
 
         <div>
-          <div class="block-title">Everything in Snapshot, plus</div>
+          <div class="block-title">What's in the dossier</div>
           <ul class="deliverables">
             <li>
               <span class="dlv-num">01</span>
@@ -666,7 +550,7 @@
               <ul>
                 <li>You haven't started generating revenue yet</li>
                 <li>You need to talk through the numbers live</li>
-                <li>You only want a pulse check (use Snapshot)</li>
+                <li>You're not sure yet — book a free call first</li>
                 <li>You're presenting to a board this week (use Founder Call)</li>
               </ul>
             </div>
@@ -693,10 +577,10 @@
     <div class="plan-block-grid">
 
       <aside class="plan-sticky">
-        <span class="eyebrow"><span class="dot"></span>AI-CFO · Tier III</span>
+        <span class="eyebrow"><span class="dot"></span>AI-CFO · Tier II</span>
         <h2 class="plan-name">Founder<br>Call.</h2>
         <div class="plan-price-row">
-          <span class="plan-price-big">$349</span>
+          <span class="plan-price-big">$599</span>
           <span class="plan-price-note">Dossier + live</span>
         </div>
         <div class="plan-stat-list">
@@ -784,7 +668,7 @@
                 <li>You don't have time for a 90-min call this month</li>
                 <li>A written dossier is enough (use Deep Dive)</li>
                 <li>You want ongoing monthly CFO services (this is one-off)</li>
-                <li>You haven't shared financial data yet (start with Snapshot)</li>
+                <li>You're not sure a call is worth it — book a free one first</li>
               </ul>
             </div>
           </div>
@@ -815,13 +699,13 @@
     </div>
 
     <div class="decision-grid">
-      <a href="snapshot.html" class="decision-cell">
+      <a href="/discovery-call.html" class="decision-cell">
         <span class="dc-tag">Situation A</span>
         <h3>"I just want to know if I'm okay."</h3>
         <p>You're building, not raising. You've never had your numbers stress-tested. You want a real answer — not reassurance, not a generic template.</p>
         <div class="dc-pick">
           <span class="dc-pick-label">Start with</span>
-          <span class="dc-tier">Snapshot · Free →</span>
+          <span class="dc-tier">Free call →</span>
         </div>
       </a>
       <a href="deep-dive.html" class="decision-cell">
@@ -830,7 +714,7 @@
         <p>There's a big decision in the next 90 days. You need defensible numbers and a model. A written dossier is enough — you'll handle the conversations yourself.</p>
         <div class="dc-pick">
           <span class="dc-pick-label">Start with</span>
-          <span class="dc-tier">Deep Dive · $99 →</span>
+          <span class="dc-tier">Deep Dive · $349 →</span>
         </div>
       </a>
       <a href="founder-call.html" class="decision-cell">
@@ -839,7 +723,7 @@
         <p>You have a meeting coming up. You need to rehearse the answers — and have a CFO to call for two weeks after if it gets complicated.</p>
         <div class="dc-pick">
           <span class="dc-pick-label">Start with</span>
-          <span class="dc-tier">Founder Call · $349 →</span>
+          <span class="dc-tier">Founder Call · $599 →</span>
         </div>
       </a>
     </div>
@@ -850,9 +734,9 @@
   <div class="plans-bottom-band">
     <div class="container">
       <span class="eyebrow"><span class="dot"></span>Start where you are</span>
-      <p>Start with Snapshot. If you want the Deep Dive afterward, <strong>we credit the work already done.</strong> Same when moving into a Founder Call. No starting over — we build on what we already know about your business.</p>
+      <p>Not sure which plan fits? Book a free call and we'll tell you exactly what you need. Move from a Deep Dive into a Founder Call later and <strong>we build on the work already done.</strong> No starting over.</p>
       <div class="mini-cta-row" style="justify-content: center;">
-        <a href="snapshot.html" class="btn btn-primary"><span>Start free — no card</span><span class="btn-arrow-icon">→</span></a>
+        <a href="/discovery-call.html" class="btn btn-primary"><span>Book a Free Call</span><span class="btn-arrow-icon">→</span></a>
         <a href="index.html#tab-02" class="btn btn-ghost">See side-by-side table</a>
       </div>
     </div>
@@ -875,9 +759,9 @@
       <div>
         <h4>AI-CFO</h4>
         <ul>
-          <li><a href="snapshot.html">Snapshot — Free</a></li>
-          <li><a href="deep-dive.html">Deep Dive — $99</a></li>
-          <li><a href="founder-call.html">Founder Call — $349</a></li>
+          <li><a href="/discovery-call.html">Book a Free Call</a></li>
+          <li><a href="deep-dive.html">Deep Dive — $349</a></li>
+          <li><a href="founder-call.html">Founder Call — $599</a></li>
         </ul>
       </div>
       <div>
@@ -927,7 +811,7 @@
 
   // Highlight active tier in sub-nav as user scrolls
   (function () {
-    var tiers = ['snapshot', 'deep-dive', 'founder-call'];
+    var tiers = ['deep-dive', 'founder-call'];
     var btns  = document.querySelectorAll('.plans-subnav-btn');
 
     function update() {

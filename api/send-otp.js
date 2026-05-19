@@ -46,7 +46,6 @@ module.exports = async function handler(req, res) {
   const token = sign(`${email}|${otp}|${expires}`, OTP_SECRET);
 
   const tierLabel = ({
-    'snapshot': 'AI-CFO Snapshot',
     'deep-dive': 'AI-CFO Deep Dive',
     'founder-call': 'AI-CFO Founder Call',
   })[service] || 'AI-CFO';

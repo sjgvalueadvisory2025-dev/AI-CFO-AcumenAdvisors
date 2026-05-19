@@ -15,5 +15,9 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/snapshot", "destination": "/discovery-call", "permanent": true },
+    { "source": "/snapshot.html", "destination": "/discovery-call", "permanent": true }
+  ],
   "cleanUrls": true
 }

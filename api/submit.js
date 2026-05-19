@@ -7,7 +7,6 @@ const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const MAX_TOTAL_SIZE = 25 * 1024 * 1024;
 
 const SERVICE_LABELS = {
-  'snapshot': 'AI-CFO Snapshot',
   'deep-dive': 'AI-CFO Deep Dive',
   'founder-call': 'AI-CFO Founder Call',
 };

@@ -1,26 +1,26 @@
 # Acumen Advisors — AI-CFO
 
-Static landing site (`index.html` + 3 form pages) plus two Vercel serverless
+Static landing site (`index.html` + supporting pages) plus two Vercel serverless
 endpoints that:
 
 1. Email a 6-digit verification code to the founder via **Gmail SMTP**
    (`/api/send-otp`), using Nodemailer.
 2. Email the full submission **with all uploaded files attached** to your
    inbox via Gmail SMTP (`/api/submit`). The service tier is included in
-   the email subject (`[AI-CFO Snapshot]`, `[AI-CFO Deep Dive]`, or
-   `[AI-CFO Founder Call]`) so you always know which of the three the
-   founder selected. The founder's verified email is set as `reply-to`,
-   so hitting "Reply" goes straight to them.
+   the email subject (`[AI-CFO Deep Dive]` or `[AI-CFO Founder Call]`) so
+   you always know which one the founder selected. The founder's verified
+   email is set as `reply-to`, so hitting "Reply" goes straight to them.
 
 ---
 
 ## Folder structure
 ```
 .
-├── index.html              # landing page (links to the 3 form pages)
-├── snapshot.html           # AI-CFO Snapshot (Tier I)   — data-service="snapshot"
-├── deep-dive.html          # AI-CFO Deep Dive (Tier II) — data-service="deep-dive"
-├── founder-call.html       # AI-CFO Founder Call (III)  — data-service="founder-call"
+├── index.html              # landing page (links to the form pages)
+├── discovery-call.html     # free discovery-call booking page
+├── plans.html              # full plan comparison page
+├── deep-dive.html          # AI-CFO Deep Dive (Tier I)  — data-service="deep-dive"
+├── founder-call.html       # AI-CFO Founder Call (II)   — data-service="founder-call"
 ├── styles.css
 ├── forms.js                # client-side OTP + submission logic
 ├── api/
@@ -124,8 +124,8 @@ Copy `.env.example` to `.env.local` and fill in real values. Then visit
 
 ## Email format you'll receive
 
-**Subject:** `[AI-CFO Snapshot] New request — Northwind Logistics, Inc.`
-(prefix is one of `[AI-CFO Snapshot]`, `[AI-CFO Deep Dive]`, `[AI-CFO Founder Call]`)
+**Subject:** `[AI-CFO Deep Dive] New request — Northwind Logistics, Inc.`
+(prefix is one of `[AI-CFO Deep Dive]`, `[AI-CFO Founder Call]`)
 
 **Body** includes the founder, company, website, verified email, business
 description, a list of attached files with sizes, and the submission timestamp.
@@ -152,20 +152,22 @@ Hitting "Reply" replies to the **founder's verified email address** (set via
 
 ---
 
-## Where the three services link from the landing page
+## Where the services link from the landing page
 
-`index.html` is a single-page experience with a 3-tab interactive section
-(**Understand Your Finances**, **What We Do**, **Why You Can Trust This**)
-and CTAs that link out to the three service intake forms:
+`index.html` is a single-page experience with a 4-tab interactive section
+(**Understand Your Finances**, **Plans & Pricing**, **What We Do**,
+**Why You Can Trust This**) and CTAs that link out to the booking page and
+the two service intake forms:
 
-| CTA / Card             | href                |
-|------------------------|---------------------|
-| AI-CFO Snapshot        | `snapshot.html`     |
-| AI-CFO Deep Dive       | `deep-dive.html`    |
-| AI-CFO Founder Call    | `founder-call.html` |
+| CTA / Card             | href                  |
+|------------------------|-----------------------|
+| Book a Free Call       | `discovery-call.html` |
+| AI-CFO Deep Dive       | `deep-dive.html`      |
+| AI-CFO Founder Call    | `founder-call.html`   |
 
 Each form page declares `data-service="..."` on its `<form>`, so `forms.js`
-sends the right tier to the API automatically.
+sends the right tier to the API automatically. The discovery-call page is a
+booking page with no form submission.
 
 ---
 
