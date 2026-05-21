@@ -2217,7 +2217,7 @@ body { padding-bottom: 88px; }
   background: var(--navy);
   display: grid;
   place-items: center;
-  opacity: 0.72;
+  opacity: 0.92;
   flex-shrink: 0;
   border: 1px solid var(--rule-soft);
 }
@@ -2235,7 +2235,7 @@ body { padding-bottom: 88px; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 18%;
-  filter: grayscale(10%);
+  filter: grayscale(0%);
 }
 .cfo-bio .eyebrow { display: inline-block; margin-bottom: 14px; }
 .cfo-bio h3 {
