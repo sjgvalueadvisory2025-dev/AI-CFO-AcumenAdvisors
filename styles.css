@@ -2210,13 +2210,16 @@ body { padding-bottom: 88px; }
 }
 .cfo-photo {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 8px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
   overflow: hidden;
   background: var(--navy);
   display: grid;
   place-items: center;
+  opacity: 0.72;
+  flex-shrink: 0;
+  border: 1px solid var(--rule-soft);
 }
 .cfo-monogram {
   font-family: var(--serif);
@@ -2232,6 +2235,7 @@ body { padding-bottom: 88px; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 18%;
+  filter: grayscale(20%);
 }
 .cfo-bio .eyebrow { display: inline-block; margin-bottom: 14px; }
 .cfo-bio h3 {
