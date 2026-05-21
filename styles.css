@@ -2235,7 +2235,7 @@ body { padding-bottom: 88px; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 18%;
-  filter: grayscale(20%);
+  filter: grayscale(10%);
 }
 .cfo-bio .eyebrow { display: inline-block; margin-bottom: 14px; }
 .cfo-bio h3 {
@@ -2554,7 +2554,7 @@ body { padding-bottom: 88px; }
     padding: 24px;
     margin-bottom: 36px;
   }
-  .cfo-photo { max-width: 200px; }
+    .cfo-photo { width: 140px; height: 140px; }
   .cfo-bio h3 { font-size: 26px; }
   .trust-grid.trust-grid-2 { grid-template-columns: 1fr; }
 
