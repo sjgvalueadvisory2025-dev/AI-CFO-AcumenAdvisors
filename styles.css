@@ -2199,7 +2199,7 @@ body { padding-bottom: 88px; }
    ============================================================ */
 .cfo-card {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 180px 1fr;
   gap: 40px;
   align-items: start;
   padding: 36px;
