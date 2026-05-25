@@ -180,6 +180,29 @@
     dz.addEventListener('drop', (e) => addFiles(e.dataTransfer.files));
   }
 
+  // ───── RAZORPAY CHECKOUT ─────
+  function openRazorpay(orderData, email, name, svc) {
+    const descriptions = {
+      'deep-dive':    'Acumen CFO Deep Dive — $349',
+      'founder-call': 'Acumen CFO Founder Call — $599',
+    };
+    return new Promise((resolve, reject) => {
+      const rzp = new window.Razorpay({
+        key:         orderData.key_id,
+        order_id:    orderData.order_id,
+        amount:      orderData.amount,
+        currency:    orderData.currency,
+        name:        'Acumen Advisors',
+        description: descriptions[svc] || svc,
+        prefill:     { email, name },
+        theme:       { color: '#1a1a1a' },
+        handler:     resolve,
+        modal:       { ondismiss: () => reject(new Error('Payment was cancelled.')) },
+      });
+      rzp.open();
+    });
+  }
+
   // ───── MODAL ─────
   function openModal() {
     modal.classList.add('is-open');
@@ -235,23 +258,49 @@
 
     formError.classList.remove('is-on');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting…';
-
-    // Build multipart form data
-    const fd = new FormData();
-    fd.append('service', service);
-    fd.append('company',     document.getElementById('company').value.trim());
-    fd.append('founder',     document.getElementById('founder').value.trim());
-    fd.append('website',     document.getElementById('website').value.trim());
-    fd.append('description', document.getElementById('description').value.trim());
-    fd.append('email',       enteredEmail);
-    fd.append('otp',         otpEntered);
-    fd.append('otpToken',    otpToken);
-    fd.append('otpExpires',  String(otpExpires));
-    fd.append('consent',     'true');
-    uploadedFiles.forEach((f) => fd.append('files', f, f.name));
+    submitBtn.textContent = 'Preparing payment…';
 
     try {
+      // Step 1: Create Razorpay order server-side
+      const orderRes = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ service }),
+      });
+      const orderData = await orderRes.json().catch(() => ({}));
+      if (!orderRes.ok || !orderData.ok) {
+        throw new Error(orderData.error || 'Could not initiate payment. Please try again.');
+      }
+
+      submitBtn.textContent = 'Complete payment…';
+
+      // Step 2: Open Razorpay checkout popup
+      const payment = await openRazorpay(
+        orderData,
+        enteredEmail,
+        document.getElementById('founder').value.trim(),
+        service
+      );
+
+      submitBtn.textContent = 'Submitting…';
+
+      // Step 3: Submit form with payment proof
+      const fd = new FormData();
+      fd.append('service',      service);
+      fd.append('company',      document.getElementById('company').value.trim());
+      fd.append('founder',      document.getElementById('founder').value.trim());
+      fd.append('website',      document.getElementById('website').value.trim());
+      fd.append('description',  document.getElementById('description').value.trim());
+      fd.append('email',        enteredEmail);
+      fd.append('otp',          otpEntered);
+      fd.append('otpToken',     otpToken);
+      fd.append('otpExpires',   String(otpExpires));
+      fd.append('consent',      'true');
+      fd.append('razorpay_order_id',   payment.razorpay_order_id);
+      fd.append('razorpay_payment_id', payment.razorpay_payment_id);
+      fd.append('razorpay_signature',  payment.razorpay_signature);
+      uploadedFiles.forEach((f) => fd.append('files', f, f.name));
+
       const r = await fetch('/api/submit', { method: 'POST', body: fd });
       const data = await r.json().catch(() => ({}));
       if (!r.ok || !data.ok) {

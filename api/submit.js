@@ -85,8 +85,8 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
-  const { GMAIL_USER, GMAIL_PASS, TO_EMAIL, OTP_SECRET } = process.env;
-  if (!GMAIL_USER || !GMAIL_PASS || !TO_EMAIL || !OTP_SECRET) {
+  const { GMAIL_USER, GMAIL_PASS, TO_EMAIL, OTP_SECRET, RAZORPAY_KEY_SECRET } = process.env;
+  if (!GMAIL_USER || !GMAIL_PASS || !TO_EMAIL || !OTP_SECRET || !RAZORPAY_KEY_SECRET) {
     return res.status(500).json({ ok: false, error: 'Server misconfigured.' });
   }
 
@@ -103,16 +103,19 @@ module.exports = async function handler(req, res) {
 
   const { fields, files } = parsed;
 
-  const service     = (fields.service     || '').toString();
-  const company     = (fields.company     || '').toString().trim();
-  const founder     = (fields.founder     || '').toString().trim();
-  const website     = (fields.website     || '').toString().trim();
-  const description = (fields.description || '').toString().trim();
-  const email       = (fields.email       || '').toString().trim().toLowerCase();
-  const otp         = (fields.otp         || '').toString().trim();
-  const otpToken    = (fields.otpToken    || '').toString().trim();
-  const otpExpires  = parseInt(fields.otpExpires || '0', 10);
-  const consent     = (fields.consent     || '').toString();
+  const service          = (fields.service          || '').toString();
+  const company          = (fields.company          || '').toString().trim();
+  const founder          = (fields.founder          || '').toString().trim();
+  const website          = (fields.website          || '').toString().trim();
+  const description      = (fields.description      || '').toString().trim();
+  const email            = (fields.email            || '').toString().trim().toLowerCase();
+  const otp              = (fields.otp              || '').toString().trim();
+  const otpToken         = (fields.otpToken         || '').toString().trim();
+  const otpExpires       = parseInt(fields.otpExpires || '0', 10);
+  const consent          = (fields.consent          || '').toString();
+  const rzpOrderId       = (fields.razorpay_order_id   || '').toString().trim();
+  const rzpPaymentId     = (fields.razorpay_payment_id || '').toString().trim();
+  const rzpSignature     = (fields.razorpay_signature  || '').toString().trim();
 
   if (!SERVICE_LABELS[service]) {
     return res.status(400).json({ ok: false, error: 'Unknown service tier.' });
@@ -138,6 +141,14 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ ok: false, error: 'The verification code is incorrect.' });
   }
 
+  if (!rzpOrderId || !rzpPaymentId || !rzpSignature) {
+    return res.status(400).json({ ok: false, error: 'Payment verification missing.' });
+  }
+  const expectedSig = sign(`${rzpOrderId}|${rzpPaymentId}`, RAZORPAY_KEY_SECRET);
+  if (!timingSafeEqualHex(expectedSig, rzpSignature)) {
+    return res.status(400).json({ ok: false, error: 'Payment could not be verified.' });
+  }
+
   const attachments = files.map(f => ({
     filename: f.originalFilename || 'upload.bin',
     content: f.buffer,
@@ -159,6 +170,9 @@ module.exports = async function handler(req, res) {
     `Website:        ${website}`,
     `Email:          ${email}`,
     ``,
+    `Payment ID:     ${rzpPaymentId}`,
+    `Order ID:       ${rzpOrderId}`,
+    ``,
     `Business description:`,
     description,
     ``,
@@ -178,6 +192,7 @@ module.exports = async function handler(req, res) {
         <tr><td style="padding:8px 0;color:#7a7568;">Founder / CEO</td><td style="padding:8px 0;">${escapeHtml(founder)}</td></tr>
         <tr><td style="padding:8px 0;color:#7a7568;">Website</td><td style="padding:8px 0;"><a href="${escapeHtml(website)}">${escapeHtml(website)}</a></td></tr>
         <tr><td style="padding:8px 0;color:#7a7568;">Email (verified)</td><td style="padding:8px 0;">${escapeHtml(email)}</td></tr>
+        <tr><td style="padding:8px 0;color:#7a7568;">Payment ID</td><td style="padding:8px 0;font-family:monospace;font-size:13px;">${escapeHtml(rzpPaymentId)}</td></tr>
         <tr><td style="padding:8px 0;color:#7a7568;vertical-align:top;">Description</td><td style="padding:8px 0;white-space:pre-wrap;line-height:1.55;">${escapeHtml(description)}</td></tr>
       </table>
       <div style="background:#f7f4ed;border:1px solid #e6e0cf;padding:14px 18px;border-radius:6px;font-size:13px;line-height:1.6;">
