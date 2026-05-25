@@ -16,12 +16,11 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ ok: false, error: 'Payment not configured.' });
   }
 
-  let body;
-  try {
-    body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
-  } catch {
-    return res.status(400).json({ ok: false, error: 'Invalid request.' });
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { body = {}; }
   }
+  body = body || {};
 
   const service = (body.service || '').toString();
   if (!SERVICE_PRICES[service]) {
