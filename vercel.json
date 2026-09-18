@@ -16,8 +16,18 @@
     }
   ],
   "redirects": [
-    { "source": "/snapshot", "destination": "/discovery-call", "permanent": true },
-    { "source": "/snapshot.html", "destination": "/discovery-call", "permanent": true }
+    { "source": "/", "destination": "https://www.acumenadvisors.co/ai-cfo", "permanent": true },
+    { "source": "/index.html", "destination": "https://www.acumenadvisors.co/ai-cfo", "permanent": true },
+    { "source": "/plans", "destination": "https://www.acumenadvisors.co/ai-cfo/plans", "permanent": true },
+    { "source": "/plans.html", "destination": "https://www.acumenadvisors.co/ai-cfo/plans", "permanent": true },
+    { "source": "/deep-dive", "destination": "https://www.acumenadvisors.co/ai-cfo/deep-dive", "permanent": true },
+    { "source": "/deep-dive.html", "destination": "https://www.acumenadvisors.co/ai-cfo/deep-dive", "permanent": true },
+    { "source": "/founder-call", "destination": "https://www.acumenadvisors.co/ai-cfo/founder-call", "permanent": true },
+    { "source": "/founder-call.html", "destination": "https://www.acumenadvisors.co/ai-cfo/founder-call", "permanent": true },
+    { "source": "/discovery-call", "destination": "https://www.acumenadvisors.co/ai-cfo/discovery-call", "permanent": true },
+    { "source": "/discovery-call.html", "destination": "https://www.acumenadvisors.co/ai-cfo/discovery-call", "permanent": true },
+    { "source": "/snapshot", "destination": "https://www.acumenadvisors.co/ai-cfo/discovery-call", "permanent": true },
+    { "source": "/snapshot.html", "destination": "https://www.acumenadvisors.co/ai-cfo/discovery-call", "permanent": true }
   ],
   "cleanUrls": true
 }

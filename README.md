@@ -1,5 +1,32 @@
 # Acumen Advisors — Acumen CFO
 
+> ## ⚠️ This site has moved
+>
+> Acumen CFO now lives on the main Acumen Advisors website, at
+> **<https://www.acumenadvisors.co/ai-cfo>**, and is maintained in the
+> [`Acumen_website`](https://github.com/sjgvalueadvisory2025-dev/Acumen_website)
+> repo under `app/ai-cfo/` (pages) and `app/api/` (the intake endpoints).
+>
+> Every page here was carried over:
+>
+> | Old path | New URL |
+> | --- | --- |
+> | `/` | <https://www.acumenadvisors.co/ai-cfo> |
+> | `/plans` | <https://www.acumenadvisors.co/ai-cfo/plans> |
+> | `/deep-dive` | <https://www.acumenadvisors.co/ai-cfo/deep-dive> |
+> | `/founder-call` | <https://www.acumenadvisors.co/ai-cfo/founder-call> |
+> | `/discovery-call` | <https://www.acumenadvisors.co/ai-cfo/discovery-call> |
+>
+> `vercel.json` now permanently redirects the old paths to the new URLs, so the
+> `.vercel.app` address is never shown to visitors. The environment variables
+> (`GMAIL_USER`, `GMAIL_PASS`, `TO_EMAIL`, `OTP_SECRET`, `RAZORPAY_KEY_ID`,
+> `RAZORPAY_KEY_SECRET`) need to be set on the **Acumen_website** Vercel project
+> for the intake forms to work there.
+>
+> The source below is kept for reference only. Make changes in `Acumen_website`.
+
+---
+
 Static landing site (`index.html` + supporting pages) plus two Vercel serverless
 endpoints that:
 
